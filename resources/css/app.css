@@ -1,3 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+a {
+    text-decoration: none;
+}
+
+body {
+    background-image: url('./../../images/AutoCar.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.brand {
+    font-size: 36px;
+    font-weight: 900;
+    color: #227afc;
+}
+
+.brand:hover {
+    font-size: 36px;
+    font-weight: 900;
+    color: #227afc;
+}
+
+.navbar {
+    background-color: black;
+    opacity: .9;
+}
