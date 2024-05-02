@@ -4,16 +4,16 @@ import { User } from '@/types';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import DropLink from '@/Components/DropLink';
 
-export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
+export default function Authenticated({ user, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
 
     return (
         <>
-            <Navbar key={'sm'} expand={'sm'} className="mb-3 navbar">
-          <Container fluid>
-            <Link href="/">
-            <Navbar.Brand>Car wash</Navbar.Brand>
-            </Link>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${'sm'}`} />
+          <Navbar key={'sm'} expand={'sm'} className="mb-3">
+            <Container fluid>
+              <Link href="/">
+                <Navbar.Brand className='brand'>Car wash</Navbar.Brand>
+              </Link>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${'sm'}`}/>
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${'sm'}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${'sm'}`}
@@ -35,7 +35,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-        <main>{children}</main>
+        <main>
+          {children}
+        </main>
         </>
     );
 }

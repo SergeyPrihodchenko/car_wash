@@ -7,8 +7,8 @@ export default function AdminPanel({ auth }: PageProps) {
         <AuthenticatedLayout
             user={auth.user}
         >
-            <Head title="AdminPanel" />
-
+        <Head title="AdminPanel" />
+        <div className="test"></div>
         </AuthenticatedLayout>
     );
 }

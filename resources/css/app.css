@@ -5,7 +5,13 @@ a {
 body {
     background-image: url('./../../images/AutoCar.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
+}
+
+main {
+    top: 70px;
+    position: absolute;
+    width: 100%;
 }
 
 .brand {
@@ -21,6 +27,55 @@ body {
 }
 
 .navbar {
+    position: fixed;
+    width: 100%;
     background-color: black;
     opacity: .9;
+    z-index: 999;
+}
+
+.navbar * {
+    opacity: 1;
+}
+
+.navbar-toggler {
+    background-color:white;
+    opacity: .2;
+}
+
+.auth_modal {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    opacity: .87;
+}
+
+.auth_modal * {
+    opacity: 1;
+}
+
+.nav-link {
+    color: #227afc;
+}
+
+.nav-link:hover {
+    color: #3d88f8;
+}
+
+.content_box {
+    position: relative;
+    display: flex;
+    height: 1500px;
+}
+
+.time_table {
+    border-radius: 30px;
+    background-color: white;
+    opacity: .8;
+    color: black;
+    padding: 5px 10px;
+    margin: 5px;
 }

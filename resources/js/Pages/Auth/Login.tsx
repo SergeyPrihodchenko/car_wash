@@ -1,5 +1,4 @@
 import { useEffect, FormEventHandler } from 'react';
-import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import { Head, Link, useForm } from '@inertiajs/react';
@@ -28,7 +27,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
         <GuestLayout>
             <Head title="Log in" />
 
-            <Container>
+            <Container className='auth_modal'>
                 <Form onSubmit={submit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
@@ -40,7 +39,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                             onChange={(e) => setData('email', e.target.value)}
                         />
                         <Form.Text className="text-muted">
-                            <InputError message={errors.email} className="mt-2" />
+                            <InputError message={errors.email} className="mt-2 error" />
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -53,7 +52,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                             onChange={(e) => setData('password', e.target.value)}
                         />
                         <Form.Text className="text-muted">
-                            <InputError message={errors.password} className="mt-2" />
+                            <InputError message={errors.password} className="mt-2 error" />
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -80,22 +79,6 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                     </Button>
                 </Form>
             </Container>
-
-            <form onSubmit={submit}>
-                <div>
-
-
-
-                </div>
-
-                <div className="mt-4">
-
-
-                    
-                </div>
-
-               
-            </form>
         </GuestLayout>
     );
 }

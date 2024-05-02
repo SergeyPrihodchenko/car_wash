@@ -31,9 +31,9 @@ export default function Guest({ children }: PropsWithChildren) {
                     </Navbar.Offcanvas>
                 </Container>
             </Navbar>
-            <Container>
+            <main>
                 {children}
-            </Container>
+            </main>
         </>
     );
 }
