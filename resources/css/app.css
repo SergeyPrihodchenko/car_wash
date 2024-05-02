@@ -5,7 +5,7 @@ a {
 body {
     background-image: url('./../../images/AutoCar.jpg');
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: 100%;
 }
 
 main {
@@ -57,7 +57,7 @@ main {
     opacity: 1;
 }
 
-.nav-link {
+.dropdown-toggle {
     color: #227afc;
 }
 
@@ -68,7 +68,6 @@ main {
 .content_box {
     position: relative;
     display: flex;
-    height: 1500px;
 }
 
 .time_table {
@@ -78,4 +77,8 @@ main {
     color: black;
     padding: 5px 10px;
     margin: 5px;
+}
+
+.present_list {
+    padding-left: 30px;
 }
