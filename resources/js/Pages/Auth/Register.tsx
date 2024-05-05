@@ -65,7 +65,7 @@ export default function Register() {
                             required
                         />
                         <Form.Text className="text-muted">
-                            <InputError message={errors.password_confirmation} className="mt-2 error" />
+                            <InputError message={errors.password} className="mt-2 error" />
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword_confirmation">
