@@ -3,12 +3,13 @@ import { Link } from '@inertiajs/react';
 import { User } from '@/types';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import DropLink from '@/Components/DropLink';
+import Footer from '@/Components/Footer';
 
 export default function Authenticated({ user, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
 
     return (
         <>
-          <Navbar key={'sm'} expand={'sm'} className="mb-3">
+          <Navbar key={'sm'} expand={'sm'} className="mb-3 navbar">
             <Container fluid>
               <Link href="/">
                 <Navbar.Brand className='brand'>Car wash</Navbar.Brand>

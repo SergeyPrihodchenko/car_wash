@@ -1,3 +1,4 @@
+import Footer from '@/Components/Footer';
 import { Link } from '@inertiajs/react';
 import { PropsWithChildren } from 'react';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
