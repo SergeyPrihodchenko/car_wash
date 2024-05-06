@@ -24,7 +24,7 @@ export default function Guest({ children }: PropsWithChildren) {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Nav.Link><Link href={route('dashboard')}>Главная</Link></Nav.Link>
+                            <Nav.Link><Link href={route('main')}>Главная</Link></Nav.Link>
                             <Nav.Link><Link href="#action1">Услуги</Link></Nav.Link>
                             <Nav.Link><Link href="#action1">О нас</Link></Nav.Link>
                         </Nav>
@@ -34,6 +34,7 @@ export default function Guest({ children }: PropsWithChildren) {
             </Navbar>
             <main>
                 {children}
+                <Footer/>
             </main>
         </>
     );

@@ -43,13 +43,12 @@ export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
                             </Row>
                         </Container>
                </Container>
-                <Container>
+                <Container className='map_box'>
                     <h4>Мы на карте</h4>
                     <Row>
                         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A03dbf4b387d6dc8aae36c9dfd3b926c336e9ef9f17cf2ccca24d0792ef20823a&amp;source=constructor" width="400" height="300"></iframe>
                     </Row>
                 </Container>
-                <Footer/>
             </GuestLayout>
         </>
     );

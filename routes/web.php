@@ -10,6 +10,10 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
+})->name('main');
+
+Route::get('/services', function () {
+    return Inertia::render('Services', []);
 });
 
 Route::get('/admin/panel', function () {
