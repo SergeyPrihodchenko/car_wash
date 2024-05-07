@@ -2,19 +2,7 @@ a {
     text-decoration: none;
 }
 
-main {
-    background-image: url('./../../images/AutoCar.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-
-    height: 100%;
-
-    top: 70px;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
+/* *******************************NAVBAR */
 
 .brand {
     font-size: 36px;
@@ -30,6 +18,7 @@ main {
 
 .navbar {
     position: fixed;
+    top: 0;
     width: 100%;
     background-color: rgb(0, 0, 0, 0.9);
     z-index: 999;
@@ -39,7 +28,9 @@ main {
     background-color:white;
 }
 
-.auth_modal {
+/* *******************************RIGISTER LOGIN*/
+
+.auth_box {
     margin-bottom: 60px;
     max-width: 600px;
     width: 100%;
@@ -47,6 +38,10 @@ main {
     background-color: rgb(255, 255, 255, 0.8);
     color: black;
 
+}
+
+.already_registered {
+    margin-right: 10px;
 }
 
 .dropdown-toggle {
@@ -57,29 +52,7 @@ main {
     color: #3d88f8;
 }
 
-.content_box {
-    position: relative;
-    display: flex;
-}
-
-.time_table {
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: black;
-    padding: 15px;
-}
-
-.present_list {
-    padding-left: 30px;
-}
-
-.map_box {
-    margin-bottom: 60px;
-}
+/* *******************************FOOTER*/
 
 .footer {
     position: absolute;
@@ -103,6 +76,9 @@ main {
 
     text-align: center;
 }
+
+/* *******************************ADMIN SERVICES PANEL*/
+
 
 .admin_main_block {
     padding: 15px;
@@ -153,15 +129,4 @@ main {
 
 @media (max-width: 665px)  {
 
-    main {
-        background-image: none;
-        background-color: #94bfff;
-    }
-    .content_box {
-        flex-direction: column;
-    }
-
-    .category_control_form {
-        align-items: start;
-    }
 }

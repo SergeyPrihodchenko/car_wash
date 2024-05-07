@@ -38,8 +38,8 @@ export default function Authenticated({ user, children }: PropsWithChildren<{ us
         </Navbar>
         <main>
           {children}
-          <Footer/>
         </main>
+        <Footer/>
         </>
     );
 }

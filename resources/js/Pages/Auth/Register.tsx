@@ -27,7 +27,7 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
-            <Container className='auth_modal'>
+            <Container className='auth_box'>
                 <Form onSubmit={submit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Email address</Form.Label>
@@ -82,6 +82,7 @@ export default function Register() {
                         </Form.Text>
                     </Form.Group>
                     <Link
+                        className='already_registered'
                         href={route('login')}
                     >
                         Already registered?

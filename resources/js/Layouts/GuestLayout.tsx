@@ -34,8 +34,8 @@ export default function Guest({ children }: PropsWithChildren) {
             </Navbar>
             <main>
                 {children}
-                <Footer/>
             </main>
+            <Footer/>
         </>
     );
 }
