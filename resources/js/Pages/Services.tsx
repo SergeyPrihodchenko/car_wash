@@ -5,13 +5,15 @@ export default function Services() {
     return (
         <>
             <Guest>
-                <Container className="service_control">
-                    <ul>
-                        <li>test</li>
-                        <li>test</li>
-                        <li>test</li>
-                        <li>test</li>
-                    </ul>
+                <Container className="main_box">
+                    <Container className="service_control">
+                        <ul>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                        </ul>
+                    </Container>
                 </Container>
             </Guest>
         </>

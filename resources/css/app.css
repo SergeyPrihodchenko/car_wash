@@ -30,9 +30,15 @@ header{
  }
 
 main {
-    background-image: url('./../../images/AutoCar.jpg');
+    background-image: url('./images/AutoCar.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.ya_map {
+    max-width: 600px;
+    height: 500px;
+    width: 100%;
 }
 
 .main_box {
@@ -72,6 +78,15 @@ main {
 .title_list_presents {
     text-shadow: 2px 2px 5px white, -2px -2px 5px white;
     font-weight: 900;
+}
+
+.carousel_box {
+    padding: 20px 0px;
+}
+
+.carousel_img {
+    width: 100%;
+    height: 600px;
 }
 
 /* *******************************NAVBAR */
@@ -199,11 +214,25 @@ main {
 
 @media (max-width: 665px)  {
 
+    main {
+        background-image: none;
+        background-color: #86c8ff;
+    }
+
     .mainPage_box {
         flex-direction: column;
     }
 
     .list_box {
         margin-bottom: 15px;
+    }
+
+    .carousel_img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .ya_map {
+        height: 240px;
     }
 }
