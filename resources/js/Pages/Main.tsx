@@ -1,7 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Carousel, Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { Button, Carousel, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import Footer from '@/Components/Footer';
 import { url } from 'inspector';
 
@@ -23,11 +23,16 @@ export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
                             </ListGroup>
                         </Container>
                         <Container className='list_box'>
-                            <h2 className='title_list_presents'>Время работы</h2>
-                            <ListGroup variant="flush" className='list_presents'>
-                                <ListGroup.Item className='list_item'>пн-пт: 8:00-20:00</ListGroup.Item>
-                                <ListGroup.Item className='list_item'>сб-вс: 12:00-20:00</ListGroup.Item>
-                            </ListGroup>
+                            <Container>
+                                <h2 className='title_list_presents'>Время работы</h2>
+                                <ListGroup variant="flush" className='list_presents'>
+                                    <ListGroup.Item className='list_item'>пн-пт: 8:00-20:00</ListGroup.Item>
+                                    <ListGroup.Item className='list_item'>сб-вс: 12:00-20:00</ListGroup.Item>
+                                </ListGroup>
+                            </Container>
+                            <Container className='btn_service_box'>
+                                <Button variant="success" className='animate__animated animate__backInLeft'>Записаться на услугу</Button>
+                            </Container>
                         </Container>
                     </Container>
                     <Container className='carousel_box'>

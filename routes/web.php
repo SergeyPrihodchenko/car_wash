@@ -14,7 +14,7 @@ Route::get('/', function () {
 
 Route::get('/services', function () {
     return Inertia::render('Services', []);
-});
+})->name('services');
 
 Route::get('/admin/panel', function () {
     return Inertia::render('AdminPanel');
