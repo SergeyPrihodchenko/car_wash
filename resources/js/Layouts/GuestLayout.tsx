@@ -1,9 +1,11 @@
+import DropLink from '@/Components/DropLink';
 import Footer from '@/Components/Footer';
+import { User } from '@/types';
 import { Link } from '@inertiajs/react';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 
-export default function Guest({ children }: PropsWithChildren) {
+export default function Guest({ children, user }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     return (
         <>
             <Navbar key={'sm'} expand={'sm'} className="mb-3 navbar">
@@ -24,9 +26,10 @@ export default function Guest({ children }: PropsWithChildren) {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Nav.Link><Link href={route('main')}>Главная</Link></Nav.Link>
-                            <Nav.Link><Link href={route('services')}>Услуги</Link></Nav.Link>
-                            <Nav.Link><Link href="#action1">О нас</Link></Nav.Link>
+                            <Link href={route('main')}><Nav.Link as='span'>Главная</Nav.Link></Link>
+                            <Link href={route('services')}><Nav.Link as='span'>Услуги</Nav.Link></Link>
+                            <Link href={route('about')}><Nav.Link as='span'>О нас</Nav.Link></Link>
+                            {user ? <DropLink name={user.name}/> : ''}
                         </Nav>
                     </Offcanvas.Body>
                     </Navbar.Offcanvas>

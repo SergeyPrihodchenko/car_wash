@@ -35,6 +35,10 @@ main {
     background-size: cover;
 }
 
+.navbar-toggler {
+    background-color: white;
+}
+
 .ya_map {
     max-width: 600px;
     height: 500px;

@@ -1,16 +1,14 @@
-import { Link, Head } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Button, Carousel, Col, Container, ListGroup, Row } from 'react-bootstrap';
-import Footer from '@/Components/Footer';
-import { url } from 'inspector';
+import { Button, Carousel, Container, ListGroup } from 'react-bootstrap';
 
 export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
 
     return (
         <>
             <Head title="Main" />
-            <GuestLayout>
+            <GuestLayout user={auth.user}>
                 <Container className='main_box'>
                     <Container className='mainPage_box'>
                         <Container className='list_box'>
@@ -31,7 +29,7 @@ export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
                                 </ListGroup>
                             </Container>
                             <Container className='btn_service_box'>
-                                <Button variant="success" className='animate__animated animate__backInLeft'>Записаться на услугу</Button>
+                                <Button variant="success" className='order_btn animate__animated animate__backInLeft'>Записаться на услугу</Button>
                             </Container>
                         </Container>
                     </Container>

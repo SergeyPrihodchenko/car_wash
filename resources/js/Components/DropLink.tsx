@@ -5,7 +5,7 @@ export default function DropLink({name}: {name:string}) {
     return (
         <NavDropdown title={name} id="navbarScrollingDropdown">
             <NavDropdown.Item as='span'>
-                <Link href="#action3">
+                <Link href={route('orders')}>
                     Заказы
                 </Link>
             </NavDropdown.Item>

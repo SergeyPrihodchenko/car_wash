@@ -16,6 +16,14 @@ Route::get('/services', function () {
     return Inertia::render('Services', []);
 })->name('services');
 
+Route::get('/about', function () {
+    return Inertia::render('About', []);
+})->name('about');
+
+Route::get('/orders', function () {
+    return Inertia::render('Orders', []);
+})->middleware('auth')->name('orders');
+
 Route::get('/admin/panel', function () {
     return Inertia::render('AdminPanel');
 })->middleware(['auth', 'verified'])->name('dashboard');

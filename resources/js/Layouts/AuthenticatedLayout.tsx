@@ -27,9 +27,9 @@ export default function Authenticated({ user, children }: PropsWithChildren<{ us
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link><Link href={route('main')}>Главная</Link></Nav.Link>
-                  <Nav.Link><Link href={route('services')}>Услуги</Link></Nav.Link>
-                  <Nav.Link><Link href="#action1">О нас</Link></Nav.Link>
+                  <Link href={route('main')}><Nav.Link as='span'>Главная</Nav.Link></Link>
+                  <Link href={route('services')}><Nav.Link as='span'>Услуги</Nav.Link></Link>
+                  <Link href={route('about')}><Nav.Link as='span'>О нас</Nav.Link></Link>
                   {user ? <DropLink name={user.name}/> : ''}
                 </Nav>
               </Offcanvas.Body>
