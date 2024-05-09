@@ -30,9 +30,11 @@ header{
  }
 
 main {
-    background-image: url('/public/images/AutoCar.jpg');
+    /* background-image: url('/public/images/AutoCar.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+
+    background-color: rgb(36, 36, 36);
 }
 
 .navbar-toggler {
