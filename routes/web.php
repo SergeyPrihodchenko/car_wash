@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::get('/orders', function () {
 Route::get('/admin/panel', function () {
     return Inertia::render('AdminPanel');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/sendOrder', [OrderController::class, 'send'])->name('order.send');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,9 +1,20 @@
-import { Head } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Button, Carousel, Container, ListGroup } from 'react-bootstrap';
 
 export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
+
+    const {post, data} = useForm(
+        {
+            name: 'Sergey',
+            phone: '8-977-401-43-16'
+        }
+    );
+
+    const sendOprder = () => {
+        post(route('order.send'));
+    }
 
     return (
         <>
@@ -29,7 +40,7 @@ export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
                                 </ListGroup>
                             </Container>
                             <Container className='btn_service_box'>
-                                <Button variant="success" className='order_btn animate__animated animate__backInLeft'>Записаться на услугу</Button>
+                                <Button variant="success" onClick={sendOprder} className='order_btn animate__animated animate__backInLeft'>Записаться на услугу</Button>
                             </Container>
                         </Container>
                     </Container>

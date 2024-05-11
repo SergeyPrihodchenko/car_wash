@@ -7,6 +7,11 @@ import Footer from '@/Components/Footer';
 
 export default function Authenticated({ user, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
 
+    window.Echo.private('count_orders')
+    .listen('.count_orders', (res: any) => {
+      console.log(res);
+    })
+
     return (
         <>
           <Navbar key={'sm'} expand={'sm'} className="mb-3 navbar">

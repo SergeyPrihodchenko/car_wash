@@ -1,4 +1,5 @@
 import './bootstrap';
+import './echo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/app.css';
 import 'animate.css';
