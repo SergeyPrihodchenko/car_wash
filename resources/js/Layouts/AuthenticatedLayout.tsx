@@ -5,12 +5,7 @@ import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import DropLink from '@/Components/DropLink';
 import Footer from '@/Components/Footer';
 
-export default function Authenticated({ user, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
-
-    window.Echo.private('count_orders')
-    .listen('.count_orders', (res: any) => {
-      console.log(res);
-    })
+export default function Authenticated({ user, children, count_orders }: PropsWithChildren<{ user: User, header?: ReactNode, count_orders?: number }>) {
 
     return (
         <>
@@ -35,7 +30,7 @@ export default function Authenticated({ user, children }: PropsWithChildren<{ us
                   <Link href={route('main')}><Nav.Link as='span'>Главная</Nav.Link></Link>
                   <Link href={route('services')}><Nav.Link as='span'>Услуги</Nav.Link></Link>
                   <Link href={route('about')}><Nav.Link as='span'>О нас</Nav.Link></Link>
-                  {user ? <DropLink name={user.name}/> : ''}
+                  {user ? <DropLink name={user.name} count_orders={count_orders}/> : ''}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

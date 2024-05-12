@@ -111,6 +111,10 @@ main {
 
 /* *******************************NAVBAR */
 
+.dropdown-menu[data-bs-popper] {
+    left: -100px;
+}
+
 .brand {
     font-size: 36px;
     font-weight: 900;
@@ -235,6 +239,32 @@ main {
 .service_control_button {
     padding: 5px 20px;
 }
+
+.nav_counter_orders {
+    position: absolute;
+    padding: 2px 4px;
+    background: #ff5b5b;;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 99;
+}
+
+.count_orders {
+    position: absolute;
+    top: 5px;
+    left: 62px;
+    padding: 2px 4px;
+    background: #ff5b5b;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.nav-item::before:active {
+    display: none;
+}
+
+/* *******************************MODAL*/
 
 @media (max-width: 665px)  {
 

@@ -2,24 +2,23 @@ import { Head, useForm } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Button, Carousel, Container, ListGroup } from 'react-bootstrap';
+import { ModalOrder } from '@/Components/Modal';
+import { useState } from 'react';
+import axios from 'axios';
+import { IOrderUserData } from '@/types/formData';
 
-export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
+        ''
+export default function Main({ auth,  appName, count_orders}: PageProps<{ appName: string, count_orders: number}>) {
 
-    const {post, data} = useForm(
-        {
-            name: 'Sergey',
-            phone: '8-977-401-43-16'
-        }
-    );
+    const [show, setShow] = useState<boolean>(false);
 
-    const sendOprder = () => {
-        post(route('order.send'));
-    }
-
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
     return (
         <>
             <Head title="Main" />
-            <GuestLayout user={auth.user}>
+            <GuestLayout user={auth.user} count_orders={count_orders}>
                 <Container className='main_box'>
                     <Container className='mainPage_box'>
                         <Container className='list_box'>
@@ -40,7 +39,7 @@ export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
                                 </ListGroup>
                             </Container>
                             <Container className='btn_service_box'>
-                                <Button variant="success" onClick={sendOprder} className='order_btn animate__animated animate__backInLeft'>Записаться на услугу</Button>
+                                <Button variant="success" onClick={handleShow} className='order_btn animate__animated animate__backInLeft'>Записаться на услугу</Button>
                             </Container>
                         </Container>
                     </Container>
@@ -76,8 +75,8 @@ export default function Main({ auth,  appName}: PageProps<{ appName: string}>) {
                         </Container>
                     </Container>
                 </Container>
-
             </GuestLayout>
+            <ModalOrder handleClose={handleClose} show={show}/>
         </>
     );
 }

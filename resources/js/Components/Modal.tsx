@@ -1,68 +1,84 @@
-import { Fragment, PropsWithChildren } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { IOrderUserData } from '@/types/formData';
+import axios from 'axios';
+import { useState } from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
 
-export default function Modal({
-    children,
-    show = false,
-    maxWidth = '2xl',
-    closeable = true,
-    onClose = () => {},
-}: PropsWithChildren<{
-    show: boolean;
-    maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-    closeable?: boolean;
-    onClose: CallableFunction;
-}>) {
-    const close = () => {
-        if (closeable) {
-            onClose();
+export function ModalOrder({show, handleClose}: {show: boolean, handleClose: any}) {
+
+    const formData = new FormData;
+
+    const [error, setError] = useState<string>('');
+
+    const [data, setData] = useState<IOrderUserData>
+    (
+        {
+            name: '',
+            phone: ''
         }
-    };
+    );
 
-    const maxWidthClass = {
-        sm: 'sm:max-w-sm',
-        md: 'sm:max-w-md',
-        lg: 'sm:max-w-lg',
-        xl: 'sm:max-w-xl',
-        '2xl': 'sm:max-w-2xl',
-    }[maxWidth];
+    const onChangeInp = (e: Event | any) => {
+        setData({...data, [e.target.id]: e.target.value});        
+    }
+
+    const storeOrder = async () => {
+        formData.set('name', data.name);
+        formData.set('phone', data.phone);
+
+        axios.post(route('order.send'), formData)
+        .then((res) => {
+            setData({name: '', phone: ''});
+            handleClose();
+        })
+        .catch((err) => {
+            setError('Ошибка при отправке запроса')
+        })  
+        
+    }
+
 
     return (
-        <Transition show={show} as={Fragment} leave="duration-200">
-            <Dialog
-                as="div"
-                id="modal"
-                className="fixed inset-0 flex overflow-y-auto px-4 py-6 sm:px-0 items-center z-50 transform transition-all"
-                onClose={close}
-            >
-                <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
-                    <div className="absolute inset-0 bg-gray-500/75 dark:bg-gray-900/75" />
-                </Transition.Child>
-
-                <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    enterTo="opacity-100 translate-y-0 sm:scale-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                    leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                >
-                    <Dialog.Panel
-                        className={`mb-6 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto ${maxWidthClass}`}
-                    >
-                        {children}
-                    </Dialog.Panel>
-                </Transition.Child>
-            </Dialog>
-        </Transition>
+        <>
+            <Modal show={show} onHide={handleClose} className='animate__animated animate__bounceInDown order_modal'>
+                <Modal.Header closeButton>
+                <Modal.Title className='brand'>Car wash</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className='modal_message'>
+                    <p>{error.length ? error : 'Отправьте свои контакты, что бы мы с Вами связались.'}</p>
+                    <Container>
+                        <Form.Label htmlFor="name">Имя</Form.Label>
+                        <Form.Control
+                            type="text"
+                            id="name"
+                            aria-describedby="nameHelpBlock"
+                            value={data.name}
+                            onChange={onChangeInp}
+                        />
+                        <Form.Text id="nameHelpBlock" muted>
+                            Ваше имя как к вам обращаться.
+                        </Form.Text>
+                    </Container>
+                    <Container>
+                        <Form.Label htmlFor="phone">Номер телефона</Form.Label>
+                        <Form.Control
+                            type="phone"
+                            id="phone"
+                            aria-describedby="phoneHelpBlock"
+                            value={data.phone}
+                            onChange={onChangeInp}
+                        />
+                        <Form.Text id="phoneHelpBlock" muted>
+                            По этому номеру позвонит наш сотрудник.
+                        </Form.Text>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="primary" onClick={storeOrder}>
+                    Запросить обратный звонок
+                </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     );
 }

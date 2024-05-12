@@ -3,10 +3,11 @@ import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { Button, Container, Form } from 'react-bootstrap';
 
-export default function AdminPanel({ auth }: PageProps) {
+export default function AdminPanel({ auth, count_orders }: PageProps) {
     return (
         <AuthenticatedLayout
             user={auth.user}
+            count_orders={count_orders}
         >
         <Head title="AdminPanel" />
         <Container className='main_box'>
