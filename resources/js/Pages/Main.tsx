@@ -1,19 +1,25 @@
 import { Head, useForm } from '@inertiajs/react';
-import { PageProps } from '@/types';
+import { Category, PageProps } from '@/types';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Button, Carousel, Container, ListGroup } from 'react-bootstrap';
 import { ModalOrder } from '@/Components/Modal';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { IOrderUserData } from '@/types/formData';
 
         ''
-export default function Main({ auth,  appName, count_orders}: PageProps<{ appName: string, count_orders: number}>) {
+export default function Main({ auth,  appName, count_orders, categories, services}: PageProps<{ appName: string, count_orders: number}>) {
 
     const [show, setShow] = useState<boolean>(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const renderCategory = useCallback((category: Category) => {
+        return (<>
+            <ListGroup.Item className='list_item' key={category.id}>{category.title}</ListGroup.Item>
+        </>);
+    }, []);
     
     return (
         <>
@@ -24,10 +30,7 @@ export default function Main({ auth,  appName, count_orders}: PageProps<{ appNam
                         <Container className='list_box'>
                             <h2 className='title_list_presents'>Наши услуги</h2>
                             <ListGroup variant="flush" className='list_presents'>
-                                <ListGroup.Item className='list_item'>Cras justo odio</ListGroup.Item>
-                                <ListGroup.Item className='list_item'>Dapibus ac facilisis in</ListGroup.Item>
-                                <ListGroup.Item className='list_item'>Morbi leo risus</ListGroup.Item>
-                                <ListGroup.Item className='list_item'>Porta ac consectetur ac</ListGroup.Item>
+                                {categories.map(renderCategory)}
                             </ListGroup>
                         </Container>
                         <Container className='list_box'>
@@ -48,15 +51,15 @@ export default function Main({ auth,  appName, count_orders}: PageProps<{ appNam
                         <Carousel.Item>
                             <img className='carousel_img' src={"./images/blackCar.jpg"} alt="" />
                             <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <h3>Покраска</h3>
+                            <p>Покрасим машину по высшим стандартам</p>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
                             <img className='carousel_img' src={"./images/blueCar.jpg"} alt="" />
                             <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <h3>Мойка</h3>
+                            <p>Множество предоставляемых услуг</p>
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>

@@ -1,9 +1,70 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-import { PageProps } from '@/types';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Head, useForm } from '@inertiajs/react';
+import { Category, PageProps } from '@/types';
+import { Alert, Button, Container, Form } from 'react-bootstrap';
+import { useCallback, useState } from 'react';
 
-export default function AdminPanel({ auth, count_orders }: PageProps) {
+
+export default function AdminPanel({ auth, count_orders, categories }: PageProps) {
+
+    const [style, setStyle] = useState({
+        category: 'none',
+        service: 'none'
+    });
+
+    const { post, data, setData, errors } = useForm({
+        category: '',
+        category_id: '',
+        service: '',
+        price: ''
+    });
+
+    const handleChange = (e: any) => {
+        const title = e.target.id;
+        const value = e.target.value;
+
+        setData(title, value);
+    }
+
+    const submitCategory =(e: any) => {
+        e.preventDefault();
+        post(route('category.store'), {
+            onSuccess: () => {
+                setStyle({
+                    ...style,
+                    category: 'block'
+                });
+            }
+        });
+        setData({
+            ...data,
+            category: ''
+        });
+    }
+    const submitService =(e: any) => {
+        e.preventDefault();
+        post(route('service.store'), {
+            onSuccess: () => {
+                setStyle({
+                    ...style,
+                    service: 'block'
+                });
+            }
+        });
+        setData({
+            ...data,
+            category_id: '',
+            service: '',
+            price: ''
+        });
+    }
+
+    const renderCategories = useCallback((category: Category) => {
+        return (<>
+            <option key={category.id+category.title} value={category.id}>{category.title}</option>
+        </>);
+    }, []);
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -13,41 +74,67 @@ export default function AdminPanel({ auth, count_orders }: PageProps) {
         <Container className='main_box'>
             <Container className='admin_main_block'>
                 <Container className='category_control'>
-                <Form className='category_control_form'>
-                    <Form.Label htmlFor="inputPassword5">Добавить категорию</Form.Label>
+                    <Alert key={'success'} variant={'success'} style={{display: style.category}}> Категория добавлена </Alert>
+                <Form className='category_control_form' onSubmit={submitCategory}>
+                    <Form.Label htmlFor="category">Добавить категорию</Form.Label>
                     <Form.Control
                         type="text"
-                        id="inputPassword5"
+                        id="category"
+                        value={data.category}
+                        onChange={handleChange}
                     />
                     <Form.Text id="passwordHelpBlock" className='category_control_helpBlock' muted>
                         Добавленная категория будет отражаться на главной странице и на странице услуг.
+                    </Form.Text>
+                    <Form.Text id="passwordHelpBlock" className='category_control_helpBlock' style={{color: 'red'}} muted>
+                    {errors.category && errors.category}
                     </Form.Text>
                     <Button className='category_control_button' type='submit'>Создать</Button>
                 </Form>
                 </Container>
                 <Container className='service_control'>
-                <Form className='service_control_form'>
-                    <Form.Label htmlFor="inputPassword5">Выберете категорию</Form.Label>
-                    <Form.Select>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <Alert key={'success'} variant={'success'} style={{display: style.service}}> Категория добавлена </Alert>
+                <Form className='service_control_form' onSubmit={submitService}>
+                    <Form.Label>Список категорий</Form.Label>
+                    <Form.Select 
+                        id='category_id'
+                        name='category_id'
+                        value={data.category_id}
+                        onChange={handleChange}
+                    >
+                        <option>Выберете категорию</option>
+                        {categories.map(renderCategories)}
                     </Form.Select>
-                    <Form.Label htmlFor="inputPassword5">Введите название услуги</Form.Label>
+                    <Form.Text id="passwordHelpBlock" className='category_control_helpBlock' style={{color: 'red'}} muted>
+                    {errors.category_id && errors.category_id}
+                    </Form.Text>
+                    <Form.Label htmlFor="title_service">Введите название услуги</Form.Label>
                     <Form.Control
                         type="text"
-                        id="inputPassword5"
+                        id="service"
+                        name='service'
+                        value={data.service}
+                        onChange={handleChange}
                     />
                     <Form.Text id="passwordHelpBlock" muted>
                         Добавленая услуга будет отражаться на странице услуг.
                     </Form.Text>
-                    <Form.Label htmlFor="inputPassword5">Введите цену за услугу</Form.Label>
+                    <Form.Text id="passwordHelpBlock" className='category_control_helpBlock' style={{color: 'red'}} muted>
+                    {errors.service && errors.service}
+                    </Form.Text>
+                    <Form.Label htmlFor="price">Введите цену за услугу</Form.Label>
                     <Form.Control
                         type="number"
-                        id="inputPassword5"
+                        id="price"
+                        name='price'
+                        value={data.price}
+                        onChange={handleChange}
                     />
                     <Form.Text id="passwordHelpBlock" muted>
                         Цена будет отражаться на странице услуг.
+                    </Form.Text>
+                    <Form.Text id="passwordHelpBlock" className='category_control_helpBlock' style={{color: 'red'}} muted>
+                    {errors.price && errors.price}
                     </Form.Text>
                     <Button className='service_control_button' type='submit'>Создать</Button>
                 </Form>

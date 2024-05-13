@@ -30,16 +30,20 @@ export default function DropLink({name, count_orders}: {name:string, count_order
             <>
                 <span className="nav_counter_orders" style={{display: style}}>{counter}</span>
                 <NavDropdown onClick={switchStyle} title={name} id="navbarScrollingDropdown dropdown_menu">
-                <NavDropdown.Item as='span'>
-                    <span className="count_orders" style={{display: counter ? 'block' : 'none'}}>{counter}</span>
-                    <Link href={route('orders')}>Заказы</Link>
-                </NavDropdown.Item>
+                <Link href={route('orders')}>
+                    <NavDropdown.Item as='span'>
+                        <span className="count_orders" style={{display: counter ? 'block' : 'none'}}>{counter}</span>
+                        Заказы
+                    </NavDropdown.Item>
+                </Link>
+                <Link href={route('dashboard')}>
+                    <NavDropdown.Item as='span'>Админ панель</NavDropdown.Item>
+                </Link>
                 <NavDropdown.Divider/>
-                <NavDropdown.Item as='span'>
-                    <Link method="post" href={route('logout')}>
-                        Logout
-                    </Link>
-                </NavDropdown.Item>
+                <NavDropdown.Divider/>
+                <Link method="post" href={route('logout')}>
+                <NavDropdown.Item as='span'>Logout</NavDropdown.Item>
+                </Link>
                 </NavDropdown>
             </>
     );

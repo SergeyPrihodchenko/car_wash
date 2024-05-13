@@ -22,7 +22,11 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'nullable'
+            'id' => 'nullable',
+            'category' => 'nullable|string',
+            'category_id' => 'nullable|numeric',
+            'service' => 'nullable|string',
+            'price' => 'nullable|string'
         ];
     }
 }
