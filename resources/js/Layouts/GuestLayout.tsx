@@ -5,7 +5,7 @@ import { Link } from '@inertiajs/react';
 import { PropsWithChildren, ReactNode } from 'react';
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 
-export default function Guest({ children, user, count_orders }: PropsWithChildren<{ user: User, header?: ReactNode, count_orders: number }>) {
+export default function Guest({ children, user, count_orders }: PropsWithChildren<{ user?: User, header?: ReactNode, count_orders?: number }>) {
     return (
         <>
             <Navbar key={'sm'} expand={'sm'} className="mb-3 navbar">
